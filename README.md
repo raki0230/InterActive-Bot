@@ -14,6 +14,8 @@
 
 An intelligent conversational AI assistant built with **Streamlit**, **LangChain**, **OpenAI GPT-4o-mini**, **SQLite**, and **LangSmith**, featuring persistent chat sessions, structured outputs, follow-up question generation, memory, and user feedback collection.
 
+InterActive-Bot follows a modular, layered architecture with dedicated components for UI, services, models, configuration, and observability, enabling clean separation of concerns and easier extensibility.
+
 ---
 
 # ✨ Features
@@ -214,7 +216,7 @@ LANGCHAIN_PROJECT=Smart-QA-Bot
 ## Run the Application
 
 ```bash
-streamlit run app.py
+uv run streamlit run app.py
 ```
 
 ---
