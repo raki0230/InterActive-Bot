@@ -1,20 +1,16 @@
 import streamlit as st
 
 from src.tracing.langsmith_setup import *
-
 from src.services.qa_service import SmartQABot
 from src.services.memory_service import ConversationMemory
 from src.services.chat_history_service import ChatHistoryDB
-
 from src.components.sidebar import render_sidebar
-
 from src.components.chat import (
     initialize_chat,
     display_chat_history,
     add_user_message,
     add_assistant_message,
 )
-
 from src.components.metrics import render_metrics
 
 
@@ -160,14 +156,18 @@ if clear_chat:
 display_chat_history()
 
 # --------------------------------------------------
-# Create Bot
+# Create / Update Bot
 # --------------------------------------------------
 
-if "bot" not in st.session_state:
+if ("bot" not in st.session_state
+    or "bot_temperature" not in st.session_state
+    or st.session_state.bot_temperature != temperature):
 
     st.session_state.bot = SmartQABot(
         temperature=temperature
     )
+
+    st.session_state.bot_temperature = temperature
 
 # --------------------------------------------------
 # Chat Input

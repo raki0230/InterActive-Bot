@@ -17,22 +17,7 @@ class ChatHistoryDB:
 
         self.create_tables()
 
-    # def create_table(self):
 
-    #     cursor = self.conn.cursor()
-
-    #     cursor.execute(
-    #         """
-    #         CREATE TABLE IF NOT EXISTS chats (
-    #             id INTEGER PRIMARY KEY AUTOINCREMENT,
-    #             role TEXT NOT NULL,
-    #             content TEXT NOT NULL,
-    #             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    #         )
-    #         """
-    #     )
-
-    #     self.conn.commit()
     def create_tables(self):
 
         cursor = self.conn.cursor()
@@ -96,27 +81,6 @@ class ChatHistoryDB:
         return cursor.fetchall()
 
 
-
-    # def save_message(self, role: str, content: str,):
-
-    #     cursor = self.conn.cursor()
-
-    #     cursor.execute(
-    #         """
-    #         INSERT INTO chats(
-    #             role,
-    #             content
-    #         )
-    #         VALUES (?, ?)
-    #         """,
-    #         (
-    #             role,
-    #             content,
-    #         ),
-    #     )
-
-    #     self.conn.commit()
-
     def save_message(self, session_id, role, content):
 
         cursor = self.conn.cursor()
@@ -142,19 +106,7 @@ class ChatHistoryDB:
         return cursor.lastrowid
 
     
-    # def get_messages(self):
 
-    #     cursor = self.conn.cursor()
-
-    #     cursor.execute(
-    #         """
-    #         SELECT role, content
-    #         FROM chats
-    #         ORDER BY id ASC
-    #         """
-    #     )
-
-    #     return cursor.fetchall()
 
     def get_session_messages(self, session_id):
 
@@ -277,16 +229,3 @@ class ChatHistoryDB:
 
         return result[0] if result else None
     
-
-
-
-
-    def clear(self):
-
-        cursor = self.conn.cursor()
-
-        cursor.execute(
-            "DELETE FROM chats"
-        )
-
-        self.conn.commit()

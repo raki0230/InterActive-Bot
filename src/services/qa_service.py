@@ -1,26 +1,13 @@
 from typing import List
-
-from langchain_core.prompts import (
-    ChatPromptTemplate,
-    MessagesPlaceholder,
-)
-
+from langchain_core.prompts import (ChatPromptTemplate, MessagesPlaceholder,)
 from langchain_openai import ChatOpenAI
-
 from langsmith import traceable
-
-from src.models.qa_response import (
-    QAResponse,
-)
+from src.models.qa_response import (QAResponse,)
 
 
 class SmartQABot:
 
-    def __init__(
-        self,
-        model_name="gpt-4o-mini",
-        temperature=0.3,
-    ):
+    def __init__(self, model_name="gpt-4o-mini",temperature=0.3,):
 
         self.llm = ChatOpenAI(
             model=model_name,
