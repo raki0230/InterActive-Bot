@@ -29,11 +29,6 @@ class SmartQABot:
             QAResponse
         )
 
-        self.streaming_llm = ChatOpenAI(
-            model=model_name,
-            temperature=temperature,
-            streaming=True,
-        )
 
         self.prompt = (
             ChatPromptTemplate.from_messages(
